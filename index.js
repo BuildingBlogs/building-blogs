@@ -8,6 +8,6 @@ server.get('/health', (_, response) => {
   response.send('🤙🏼')
 })
 
-server.listen(5000, function() {
+server.listen(process.env.port, function() {
   console.log(`active on ${this.address().port}`)
 })
