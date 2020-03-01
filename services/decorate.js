@@ -1,4 +1,5 @@
 import cors from 'cors'
+// import massive from 'massive'
 
 export default function(server) {
   server.use(cors())
