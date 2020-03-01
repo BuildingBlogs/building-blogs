@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon index.js --exec \"npx babel-node -r ./node_modules/dotenv/config\"",
-    "start:prod": "rm -rf ./node_modules/.cache/babel-loader && babel-node index.js -r node_modules/dotenv/config"
+    "start:prod": "rm -rf ./node_modules/.cache/babel-loader && babel-node index.js -r /app/node_modules/dotenv/config"
   },
   "repository": {
     "type": "git",
