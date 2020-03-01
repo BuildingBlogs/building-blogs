@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon index.js --exec \"npx babel-node -r ./node_modules/dotenv/config\"",
-    "start:prod": "babel-node index.js -r node_modules/dotenv/config"
+    "start:prod": "rm -rf ./node_modules/.cache/babel-loader && babel-node index.js -r node_modules/dotenv/config"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "bcrypt": "^4.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "dotenv-cli": "^3.1.0",
     "express": "^4.17.1",
     "massive": "^6.2.0",
     "@babel/core": "^7.6.2",
@@ -42,7 +43,6 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
-    "dotenv-cli": "^3.1.0",
     "nodemon": "^2.0.2"
   },
   "engines": {
