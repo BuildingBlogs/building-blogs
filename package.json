@@ -4,8 +4,8 @@
   "description": "B(logging)aaS",
   "main": "index.js",
   "scripts": {
-    "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon index.js --exec \"npx babel-node -r ./node_modules/dotenv/config\"",
-    "start:prod": "npx @babel/node index.js -r node_modules/dotenv/config"
+    "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon -r esm -r ./node_modules/dotenv/config index.js",
+    "start:prod": "node -r esm -r ./node_modules/dotenv/config index.js"
   },
   "repository": {
     "type": "git",
@@ -31,15 +31,16 @@
   "dependencies": {
     "@babel/core": "^7.6.2",
     "@babel/node": "^7.6.2",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-optional-chaining": "^7.8.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.6.2",
     "@babel/register": "^7.6.2",
     "bcrypt": "^4.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "dotenv-cli": "^3.1.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "massive": "^6.2.0"
   },
