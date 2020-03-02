@@ -4,8 +4,11 @@
   "description": "B(logging)aaS",
   "main": "index.js",
   "scripts": {
-    "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon index.js --exec \"npx babel-node -r ./node_modules/dotenv/config\"",
-    "start:prod": "npx @babel/node index.js -r node_modules/dotenv/config"
+    "start": "nodemon -r esm -r ./node_modules/dotenv/config index.js",
+    "start:prod": "node -r esm -r ./node_modules/dotenv/config index.js",
+    "lint": "eslint --fix --ignore-path .gitignore .",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.+(js|json)\"",
+    "commit": "npm run format && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -29,24 +32,68 @@
   },
   "homepage": "https://github.com/BuildingBlogs/building-blogs#readme",
   "dependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/node": "^7.6.2",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-optional-chaining": "^7.8.3",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/register": "^7.6.2",
     "bcrypt": "^4.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "dotenv-cli": "^3.1.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "massive": "^6.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
   },
   "engines": {
     "node": "12"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2019,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
+    },
+    "globals": {
+      "Promise": "readonly"
+    },
+    "extends": [
+      "eslint:recommended",
+      "eslint-config-prettier"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "htmlWhitespaceSensitivity": "css",
+    "insertPragma": false,
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": false,
+    "printWidth": 80,
+    "proseWrap": "preserve",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false,
+    "vueIndentScriptAndStyle": false
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run commit"
+    ]
   }
 }

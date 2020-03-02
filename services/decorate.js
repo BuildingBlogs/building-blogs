@@ -1,18 +1,18 @@
-const cors = require('cors')
-// const massive = require('massive')
+import cors from 'cors';
+// import massive from 'massive'
 
-module.exports = function(server) {
-  server.use(cors())
+export default function(server) {
+  server.use(cors());
 
   /** @TODO set up massive here */
 
   server.get('/health', (_, response) => {
-    response.send('🤙🏼')
-  })
+    response.send('🤙🏼');
+  });
 
   server.listen(process.env.PORT, function() {
-    console.log(`active on ${this.address().port}`)
-  })
+    console.log(`[READY]: ${this.address().port}`);
+  });
 
-  return Promise.resolve(server)
+  return Promise.resolve(server);
 }
