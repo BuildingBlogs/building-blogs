@@ -1,4 +1,4 @@
-import cors from 'cors'
+import cors from      'cors'
 // import massive from 'massive'
 
 export default function(server) {
