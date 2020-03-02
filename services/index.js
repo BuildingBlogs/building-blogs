@@ -1,5 +1,5 @@
-import decorate from './decorate'
+import decorate from './decorate';
 
 export default function(server) {
-  decorate(server)
+  decorate(server);
 }

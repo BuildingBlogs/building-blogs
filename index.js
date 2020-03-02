@@ -1,4 +1,4 @@
-import express from 'express'
-import init from './services'
+import express from 'express';
+import init from './services';
 
-init(express())
+init(express());
