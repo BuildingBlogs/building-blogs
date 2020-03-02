@@ -4,7 +4,7 @@
   "description": "B(logging)aaS",
   "main": "index.js",
   "scripts": {
-    "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon -r esm -r ./node_modules/dotenv/config index.js",
+    "start": "nodemon -r esm -r ./node_modules/dotenv/config index.js",
     "start:prod": "node -r esm -r ./node_modules/dotenv/config index.js",
     "lint": "eslint --fix --ignore-path .gitignore .",
     "format": "prettier --write --ignore-path .gitignore \"**/*.+(js|json)\"",
