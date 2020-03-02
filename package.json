@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "rm -rf ./node_modules/.cache/babel-loader && nodemon -r esm -r ./node_modules/dotenv/config index.js",
-    "start:prod": "node -r esm -r ./node_modules/dotenv/config index.js"
+    "start:prod": "node -r esm -r ./node_modules/dotenv/config index.js",
+    "lint": "eslint --fix --ignore-path .gitignore ."
   },
   "repository": {
     "type": "git",
@@ -67,5 +68,16 @@
       "Promise": "readonly"
     },
     "extends": "eslint:recommended"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint",
+      "git add"
+    ]
   }
 }
